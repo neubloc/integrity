@@ -7,9 +7,9 @@
     - stylesheets(:reset, :buttons, :integrity)
 
     - if @status
-      %link{ :rel => "icon", :type => "image/png", :href => "/icons/" + @status.to_s + ".png" }
+      %link{ :rel => "shortuct icon", :href => "" + root_path + "icons/" + @status.to_s + ".ico" }
     - else
-      %link{ :rel => "icon", :type => "image/png", :href => "/icons/pending.png" }
+      %link{ :rel => "shortcut icon", :href => "" + root_path + "icons/pending.ico" }
 
   %body
     #header
