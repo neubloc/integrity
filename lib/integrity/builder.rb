@@ -38,9 +38,13 @@ module Integrity
     end
 
     def run
-      @result = checkout.asynch_run_in_dir(command) do |output|
-        @build.update(:output => @result.output)
-      end
+      
+      
+      @result = checkout.run_in_dir(command) 
+      
+     # do |output|
+     #   @build.update(:output => @result.output)
+     # end
     end
     
     
