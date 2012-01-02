@@ -14,7 +14,7 @@ a {
     background-color: #ed1556; }
 
 #header, #content, #footer {
-  width: 40em;
+  width: 90%;
   margin: 0 auto;
   background: #eeeeee;
   padding: 0 2em;
@@ -155,6 +155,11 @@ a {
       display: inline; }
     #content form p.submit.manual-build button {
       margin-right: 0; }
+
+    #content form p.submit.manual-build {
+      float: right; 
+      margin-top: 26px;
+    }
   #content #build form, #content #last_build form {
     font-size: .75em; }
     #content #build form p.submit, #content #last_build form p.submit {
@@ -190,7 +195,7 @@ a {
     line-height: 1.4; }
   #content .error .backtrace {
     margin: 1em 0;
-    overflow: scroll;
+    overflow: "scroll";
     height: 30em;
     border: 1px solid silver;
     line-height: 1.6; }
@@ -214,6 +219,9 @@ a {
           color: #ff1100; }
         #content #projects li a.building {
           color: #777777; }
+        #content #projects li a small {
+          font-size: 0.5em;
+          font-weight: normal; }
       #content #projects li .meta {
         position: absolute;
         right: .6em;
@@ -221,16 +229,17 @@ a {
         font-size: 0.8em;
         color: #999999;
         text-align: right; }
+  #content #previous_builds li { display: inline; }
   #content #previous_builds li a {
     display: block;
-    padding: .25em;
-    margin-bottom: .25em;
+    padding: 5px;
+    margin: 5px 0;
     border-width: 1px;
     border-style: solid; }
     #content #previous_builds li a strong {
-      font-size: 1.3em; }
+      font-size: 1em; display: block }
     #content #previous_builds li a .attribution {
-      font-size: .9em; }
+      font-size: .8em; }
   #content #projects li.success a, #content #previous_builds li.success a {
     background-color: #bbf8aa;
     border-color: #99d688;
@@ -310,12 +319,17 @@ a {
         display: block;
         font-size: .9em; }
     #content #build pre.output, #content #last_build pre.output {
-      background: #111;
-      color: #fff;
+      background: #000;
+      color: #ccc;
       padding: .5em;
       overflow: auto;
-      max-height: 50em;
-      font-size: .825em; }
+      max-height: 60em;
+      white-space: pre-wrap; /* css-3 */
+      white-space: -moz-pre-wrap !important; /* Mozilla, since 1999 */
+      white-space: -pre-wrap; /* Opera 4-6 */
+      white-space: -o-pre-wrap; /* Opera 7 */
+      word-wrap: break-word; /* Internet Explorer 5.5+ */
+      font-size: 13px; }
   #content #push_path {
     display: block;
     margin-top: 1em;
@@ -341,3 +355,19 @@ a.failed {
   text-align: right; }
   #footer strong {
     font-weight: bold; }
+    
+    
+/*****************************************************************************/
+/* neubloc  */
+/*****************************************************************************/
+
+/* CCCC00 */
+[style="color:#0A0"] {
+  color: #00C900 !important;
+}
+[style="color:#A00"] {
+  color: #C90000 !important;
+}
+[style="color:#A50"] {
+  color: #CCCC00 !important;
+}

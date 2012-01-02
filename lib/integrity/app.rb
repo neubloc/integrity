@@ -73,7 +73,7 @@ module Integrity
 
     get "/:project" do
       login_required unless current_project.public?
-
+      
       if limit = Integrity.config.project_default_build_count
         @builds = current_project.sorted_builds.all(:limit => limit + 1)
         if @builds.length <= limit
@@ -138,6 +138,17 @@ module Integrity
 
       @build = current_project.build_head
       redirect build_url(@build).to_s
+    end
+    
+    post "/:project/builds/branch/*" do |project, branch|
+      login_required
+ 
+      if current_project.branch.eql?(branch)
+        @build = current_project.build_head
+        redirect build_url(@build).to_s
+      else
+        redirect project_url(current_project).to_s
+      end
     end
 
     get "/:project/builds/:build" do

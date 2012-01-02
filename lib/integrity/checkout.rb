@@ -8,16 +8,16 @@ module Integrity
     end
 
     def run
-      runner.run! "git clone #{@repo.uri} #{@directory}"
+      runner.run! "git clone #{@repo.uri} #{@directory}" unless File.directory?(@directory)
 
       in_dir do |c|
         c.run! "git fetch origin"
-        c.run! "git checkout origin/#{@repo.branch}"
-        c.run! "git reset --hard #{sha1}"
-        # run init separately for compatibility with old versions of git
-        c.run! "git submodule init"
-        c.run! "git submodule update"
+        c.run! "git checkout #{@repo.branch}"
+        c.run! "git reset --hard HEAD"
+        c.run! "git pull"
+        c.run! "git checkout #{@repo.branch}"
       end
+
     end
 
     def metadata
@@ -53,6 +53,8 @@ module Integrity
       unless dump["committed_at"].kind_of? Time
         dump.update("committed_at" => Time.parse(dump["committed_at"]))
       end
+      
+      dump
     end
 
     def sha1
@@ -63,6 +65,11 @@ module Integrity
       runner.run!("git ls-remote --heads #{@repo.uri} #{@repo.branch}").
         output.split.first
     end
+
+    def asynch_run_in_dir(command, &block)
+      in_dir { |r| r.run(command, &block) }
+    end
+
 
     def run_in_dir(command)
       in_dir { |r| r.run(command) }

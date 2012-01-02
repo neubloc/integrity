@@ -1,5 +1,5 @@
 $LOAD_PATH.unshift(File.expand_path("../lib", __FILE__))
-
+require 'rubygems'
 begin
   require ".bundle/environment"
 rescue LoadError
@@ -10,7 +10,7 @@ require "integrity"
 
 # Uncomment as appropriate for the notifier you want to use
 # = Email
-# require "integrity/notifier/email"
+require "integrity/notifier/email"
 # = Campfire
 # require "integrity/notifier/campfire"
 # = TCP
@@ -21,18 +21,16 @@ require "integrity"
 # require "integrity/notifier/notifo"
 # = AMQP
 # require "integrity/notifier/amqp"
-# = Shell
-# require "integrity/notifier/shell"
-# = Co-op
-# require "integrity/notifier/coop"
 
 Integrity.configure do |c|
-  c.database                    = "sqlite3:integrity.db"
-  c.directory                   = "builds"
-  c.base_url                    = "http://ci.example.org"
-  c.log                         = "integrity.log"
-  c.github_token                = "SECRET"
-  c.build_all                   = true
-  c.builder                     = :threaded, 5
-  c.project_default_build_count = 10
+  c.username     = "test"
+  c.password     = "test"
+  c.database     = "sqlite3:integrity.db"
+  c.directory    = "builds"
+  c.base_url     = "http://integrity.neubloc.pl"
+  c.log          = "integrity.log"
+  c.github_token = "SECRET"
+  c.build_all    = false
+  c.builder      = :threaded, 5
+  c.project_default_build_count = 50
 end

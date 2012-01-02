@@ -1,3 +1,4 @@
+require 'pry'
 module Integrity
   class Builder
     def self.build(_build, directory, logger)
@@ -25,6 +26,7 @@ module Integrity
     end
 
     def start
+
       @logger.info "Started building #{repo.uri} at #{commit}"
       @build.raise_on_save_failure = true
       @build.update(:started_at => Time.now)
@@ -36,8 +38,12 @@ module Integrity
     end
 
     def run
-      @result = checkout.run_in_dir(command)
+      @result = checkout.asynch_run_in_dir(command) do |output|
+        @build.update(:output => @result.output)
+      end
     end
+    
+    
 
     def complete
       @logger.info "Build #{commit} exited with #{@result.success} got:\n #{@result.output}"
@@ -77,7 +83,7 @@ module Integrity
     end
 
     def directory
-      @_directory ||= @directory.join(@build.id.to_s)
+      @_directory ||= @directory.join(@build.project.name)
     end
 
     def repo

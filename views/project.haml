@@ -11,7 +11,7 @@
       You can request a
       %button{ :type => :submit } manual build
 - else
-  #last_build{ :class => @project.status }
+  -#last_build{ :class => @project.status }
     = partial(:build_info, :build => @project.last_build)
 
   %form{ :action => project_path(@project, :builds), :method => :post }
@@ -26,9 +26,11 @@
         %li{ :class => build.status }
           %a{ :href => build_path(build) }
             %strong.build<
-              &== Build #{build.sha1_short}
+              == #{build.message}
             %span.attribution<
-              == by #{build.author}, #{pretty_date build.committed_at}
+              == by #{build.author}, #{pretty_time build.committed_at} 
+              - if build.completed? 
+                , took #{build_time build} seconds 
 
   - unless @showing_all_builds
     %p

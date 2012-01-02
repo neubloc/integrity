@@ -26,6 +26,15 @@ module Integrity
           strftime_with_ordinal(date_time, "on %b %o")
         end
       end
+      
+      def pretty_time(time)
+        unless time
+          return "commit date not loaded"
+        end
+      
+        time.strftime('%Y.%m.%d %H:%M')
+      end
+      
 
       def strftime_with_ordinal(date_time, format_string)
         ordinal = case date_time.day

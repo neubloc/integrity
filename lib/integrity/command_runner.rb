@@ -1,3 +1,4 @@
+require "neubloc/command_runner"
 module Integrity
   class CommandRunner
     class Error < StandardError; end
@@ -22,7 +23,11 @@ module Integrity
 
       output = ""
       with_clean_env do
-        IO.popen(cmd, "r") { |io| output = io.read }
+        Neubloc::CommandRunner.run(command) do |out|
+          output += out
+          @logger.debug(out)
+          yield out if block_given?
+        end
       end
 
       Result.new($?.success?, output.chomp)
