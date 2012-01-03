@@ -23,7 +23,7 @@ module Integrity
 
       output = ""
       with_clean_env do
-        Neubloc::CommandRunner.run(command) do |out|
+        Neubloc::CommandRunner.run(cmd) do |out|
           output += out
           @logger.debug(out)
           yield out if block_given?

@@ -7,16 +7,7 @@ gem "dm-types",              "1.0.2"
 gem "dm-migrations",         "1.0.2"
 gem "dm-aggregates",         "1.0.2"
 gem "dm-validations",        "1.0.2"
-if RUBY_VERSION < '1.9'
-  # 0.10.7 seems to work fine, at least for tests,
-  # but produces a huge amount of spam due to:
-  # https://github.com/datamapper/dm-do-adapter/issues/4
-  gem "do_sqlite3",          "0.10.2"
-else
-  # do_sqlite3 < 0.10.7 uses DateTime.new!, which was removed
-  # in ruby 1.9 somewhere before 1.9.3-preview1.
-  gem "do_sqlite3",          "0.10.7"
-end
+gem "do_sqlite3",          "0.10.7"
 gem "rake",                  "0.8.7"
 gem "haml",                  "3.0.25"
 gem "addressable",           "2.2.2"
@@ -25,6 +16,9 @@ gem "sinatra",               "1.1.2"
 gem "sinatra-authorization", "1.0.0"
 gem "bcat",                  "0.5.2"
 gem "rack",                  "1.1.0"
+
+gem "pry"
+gem "pry-remote"
 
 # If you want to use Thin:
 # gem "thin"
