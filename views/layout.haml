@@ -5,6 +5,8 @@
     %meta{ :content => "en", :"http-equiv" => "Content-Language" }
     %title= "#{@title.last} | integrity"
     - stylesheets(:reset, :buttons, :integrity)
+    %script{ :type => "text/javascript", :src  => "http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"}
+    %script{ :type => "text/javascript", :src  => "/application.js"}
   %body
     #header
       %h1= @title.join(" / ")

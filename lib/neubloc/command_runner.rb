@@ -53,7 +53,7 @@ module Neubloc
     def run(&block)
       IO.popen(command, "r") do |io|
         reset
-        io.each_line do |line|
+        io.chars do |line|
           add_output(line)
           yield get_output_and_reset if yield?
         end
@@ -63,6 +63,3 @@ module Neubloc
   
   end
 end
-
-
-
