@@ -23,11 +23,11 @@ require "integrity/notifier/email"
 # require "integrity/notifier/amqp"
 
 Integrity.configure do |c|
-  c.username     = "test"
-  c.password     = "test"
+  c.username     = "yourlogin"
+  c.password     = "yourpassowrd"
   c.database     = "sqlite3:integrity.db"
   c.directory    = "builds"
-  c.base_url     = "http://integrity.neubloc.pl"
+  c.base_url     = "http://example.com"
   c.log          = "integrity.log"
   c.github_token = "SECRET"
   c.build_all    = false
