@@ -143,12 +143,9 @@ module Integrity
     post "/:project/builds/branch/*" do |project, branch|
       login_required
  
-      if current_project.branch.eql?(branch)
-        @build = current_project.build_head
-        redirect build_url(@build).to_s
-      else
-        redirect project_url(current_project).to_s
-      end
+      current_project.branch = branch
+      @build = current_project.build_head
+      redirect build_url(@build).to_s
     end
 
     get "/:project/builds/:build" do
