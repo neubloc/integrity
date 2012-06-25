@@ -12,8 +12,9 @@ module Integrity
 
       in_dir do |c|
         c.run! "git fetch origin"
+        c.run! "git reset --hard origin"
+        c.run! "git branch -D #{@repo.branch}"
         c.run! "git checkout #{@repo.branch}"
-        c.run! "git reset --hard origin/#{@repo.branch}"
       end
 
     end
