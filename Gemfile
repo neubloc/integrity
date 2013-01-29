@@ -49,8 +49,8 @@ gem "pry-remote"
 # gem "pg"
 # gem "dm-postgres-adapter", "1.0.2"
 
-# gem "mysql"
-# gem "dm-mysql-adapter", "1.0.2"
+gem "mysql"
+gem "dm-mysql-adapter", "1.0.2"
 
 # = Development dependencies.
 group :test do

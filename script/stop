@@ -1,0 +1,5 @@
+#!/bin/bash
+PATH=/home/integrity/.gem/ruby/1.8/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games
+
+echo "Stoping server"
+thin stop

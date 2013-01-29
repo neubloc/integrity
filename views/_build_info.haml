@@ -13,7 +13,10 @@
       &== by: #{build.author}
     |
     %span.when{ :title => build.committed_at }<
-      &= pretty_date build.committed_at
+      &= pretty_time build.committed_at
+    |
+    %span.updated<
+      &== last update: #{Time.now}
     - if build.project.github?
       |
       %span.github<

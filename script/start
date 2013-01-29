@@ -1,0 +1,4 @@
+#!/bin/bash
+
+echo "Starting server"
+thin start -d -s 3 -p 4001
