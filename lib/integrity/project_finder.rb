@@ -31,7 +31,7 @@ module Integrity
     end
 
     def all
-      @all ||= Project.all(:uri.like => "#{@repo.uri}%")
+      @all ||= Project.all(:uri => @repo.uri)
     end
   end
 end
